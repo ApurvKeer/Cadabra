@@ -1,0 +1,261 @@
+{
+	"cell_id": 2892184683620985479,
+	"cells": [
+		{
+			"cell_id": 14547400932525690676,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "def post_process(ex):\n\tsort_product(ex)\n\tcanonicalise(ex)\n\tcollect_terms(ex)"
+		},
+		{
+			"cell_id": 12068257721136887592,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 11905898356153875259,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[\\mu,~\\discretionary{}{}{} \\nu,~\\discretionary{}{}{} \\rho,~\\discretionary{}{}{} \\sigma,~\\discretionary{}{}{} \\kappa,~\\discretionary{}{}{} \\lambda,~\\discretionary{}{}{} \\eta,~\\discretionary{}{}{} \\chi\\#\\right].\\end{dmath*}"
+				},
+				{
+					"cell_id": 7881896858802066255,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{}\\text{Property Indices(position=independent) attached to~}\\left[m,~\\discretionary{}{}{} n,~\\discretionary{}{}{} p,~\\discretionary{}{}{} q,~\\discretionary{}{}{} r,~\\discretionary{}{}{} s,~\\discretionary{}{}{} t,~\\discretionary{}{}{} u,~\\discretionary{}{}{} v,~\\discretionary{}{}{} w,~\\discretionary{}{}{} x,~\\discretionary{}{}{} y,~\\discretionary{}{}{} z,~\\discretionary{}{}{} m\\#\\right].\\end{dmath*}"
+				}
+			],
+			"source": "{\\mu,\\nu,\\rho,\\sigma,\\kappa,\\lambda,\\eta,\\chi#}::Indices(full, position=independent);\n{m,n,p,q,r,s,t,u,v,w,x,y,z,m#}::Indices(subspace, position=independent, parent=full);"
+		},
+		{
+			"cell_id": 8117779775235409928,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "\\partial{#}::PartialDerivative.\n\\gamma_{\\mu\\nu}::Metric.\n\\gamma^{\\mu\\nu}::InverseMetric.\n\\gamma_{\\mu? \\nu?}::Symmetric.\n\\gamma^{\\mu? \\nu?}::Symmetric.\ng_{m n}::Metric.\ng^{m n}::InverseMetric.\ng_{m n}::Symmetric.\ng^{m n}::Symmetric.\n\\delta^{\\mu?}_{\\nu?}::KroneckerDelta.\n\\delta_{\\mu?}^{\\nu?}::KroneckerDelta.\n\\Dgamma::LaTeXForm(\"\\sqrt{-\\gamma}\").\n\\Dg::LaTeXForm(\"\\sqrt{-g}\")."
+		},
+		{
+			"cell_id": 15760067428530613849,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 10844904129789448366,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 17840761280572731343,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R -> R_{\\mu \\nu} \\gamma^{\\mu \\nu}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R \\rightarrow R_{\\mu \\nu} \\gamma^{\\mu \\nu}\\end{dmath*}"
+				},
+				{
+					"cell_id": 1834437245435201722,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 11452139106652207123,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R_{\\mu? \\nu?} -> R^{\\lambda}_{\\mu? \\lambda \\nu?}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R_{\\mu? \\nu?} \\rightarrow R^{\\lambda}\\,_{\\mu? \\lambda \\nu?}\\end{dmath*}"
+				},
+				{
+					"cell_id": 9952427633720304615,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 5984917841218537818,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R^{\\lambda?}_{\\mu? \\nu? \\kappa?} -> -\\partial_{\\kappa?}(\\Gamma^{\\lambda?}_{\\mu? \\nu?}) + \\partial_{\\nu?}(\\Gamma^{\\lambda?}_{\\mu? \\kappa?})-\\Gamma^{\\lambda?}_{\\kappa? \\eta} \\Gamma^{\\eta}_{\\mu? \\nu?} + \\Gamma^{\\lambda?}_{\\nu? \\eta} \\Gamma^{\\eta}_{\\mu? \\kappa?}"
+						}
+					],
+					"source": "\\begin{dmath*}{}R^{\\lambda?}\\,_{\\mu? \\nu? \\kappa?} \\rightarrow -\\partial_{\\kappa?}{\\Gamma^{\\lambda?}\\,_{\\mu? \\nu?}}+\\partial_{\\nu?}{\\Gamma^{\\lambda?}\\,_{\\mu? \\kappa?}}-\\Gamma^{\\lambda?}\\,_{\\kappa? \\eta} \\Gamma^{\\eta}\\,_{\\mu? \\nu?}+\\Gamma^{\\lambda?}\\,_{\\nu? \\eta} \\Gamma^{\\eta}\\,_{\\mu? \\kappa?}\\end{dmath*}"
+				},
+				{
+					"cell_id": 7753731739483928307,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 2664681527881804926,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "\\Gamma^{\\lambda?}_{\\mu? \\nu?} ->  1/2 \\gamma^{\\lambda? \\kappa} (\\partial_{\\nu?}(\\gamma_{\\kappa \\mu?}) + \\partial_{\\mu?}(\\gamma_{\\kappa \\nu?})-\\partial_{\\kappa}(\\gamma_{\\mu? \\nu?}))"
+						}
+					],
+					"source": "\\begin{dmath*}{}\\Gamma^{\\lambda?}\\,_{\\mu? \\nu?} \\rightarrow \\frac{1}{2}\\gamma^{\\lambda? \\kappa} \\left(\\partial_{\\nu?}{\\gamma_{\\kappa \\mu?}}+\\partial_{\\mu?}{\\gamma_{\\kappa \\nu?}}-\\partial_{\\kappa}{\\gamma_{\\mu? \\nu?}}\\right)\\end{dmath*}"
+				}
+			],
+			"source": "RStoRT:= R -> \\gamma^{\\mu \\nu} R_{\\mu \\nu};\n\nRTtoR:= R_{\\mu? \\nu?} -> R^{\\lambda}_{\\mu? \\lambda \\nu?};\n\nRtoG:= R^{\\lambda?}_{\\mu?\\nu?\\kappa?} -> \n - \\partial_{\\kappa?}{ \\Gamma^{\\lambda?}_{\\mu?\\nu?} }\n + \\partial_{\\nu?}{ \\Gamma^{\\lambda?}_{\\mu?\\kappa?} }\n - \\Gamma^{\\eta}_{\\mu?\\nu?} \\Gamma^{\\lambda?}_{\\kappa?\\eta}\n + \\Gamma^{\\eta}_{\\mu?\\kappa?} \\Gamma^{\\lambda?}_{\\nu?\\eta};\n\nGtog:= \\Gamma^{\\lambda?}_{\\mu?\\nu?} ->\n  (1/2) * \\gamma^{\\lambda?\\kappa} ( \n        \\partial_{\\nu?}{ \\gamma_{\\kappa\\mu?} } + \\partial_{\\mu?}{ \\gamma_{\\kappa\\nu?} } - \\partial_{\\kappa}{ \\gamma_{\\mu?\\nu?} } );"
+		},
+		{
+			"cell_id": 5706883464952025751,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 7223452808789841539,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 6851908119728468001,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": "R \\Dgamma"
+						}
+					],
+					"source": "\\begin{dmath*}{}R \\sqrt{-\\gamma}\\end{dmath*}"
+				}
+			],
+			"source": "todo:=\\Dgamma R;"
+		},
+		{
+			"cell_id": 13706560354507006872,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 14674165239759171749,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13154847313233910835,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  1/2 \\Dgamma \\gamma^{\\kappa \\lambda} \\partial_{\\kappa}(\\gamma_{\\mu \\nu}) \\partial_{\\lambda}(\\gamma^{\\mu \\nu})-\\Dgamma \\gamma^{\\kappa \\lambda} \\gamma^{\\mu \\nu} \\partial_{\\kappa \\lambda}(\\gamma_{\\mu \\nu}) + \\Dgamma \\gamma^{\\kappa \\lambda} \\partial_{\\mu}(\\gamma^{\\mu \\nu}) \\partial_{\\kappa}(\\gamma_{\\lambda \\nu}) + \\Dgamma \\gamma^{\\kappa \\lambda} \\gamma^{\\mu \\nu} \\partial_{\\kappa \\mu}(\\gamma_{\\lambda \\nu}) -  1/2 \\Dgamma \\gamma^{\\kappa \\lambda} \\partial_{\\mu}(\\gamma_{\\kappa \\lambda}) \\partial_{\\nu}(\\gamma^{\\mu \\nu}) -  1/2 \\Dgamma \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}(\\gamma_{\\lambda \\nu}) \\partial_{\\mu}(\\gamma_{\\kappa \\rho}) +  1/4 \\Dgamma \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}(\\gamma_{\\lambda \\nu}) \\partial_{\\kappa}(\\gamma_{\\mu \\rho}) +  1/2 \\Dgamma \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}(\\gamma_{\\kappa \\lambda}) \\partial_{\\mu}(\\gamma_{\\nu \\rho}) -  1/4 \\Dgamma \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}(\\gamma_{\\lambda \\mu}) \\partial_{\\kappa}(\\gamma_{\\nu \\rho})"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{\\kappa \\lambda} \\partial_{\\kappa}{\\gamma_{\\mu \\nu}} \\partial_{\\lambda}{\\gamma^{\\mu \\nu}}-\\sqrt{-\\gamma} \\gamma^{\\kappa \\lambda} \\gamma^{\\mu \\nu} \\partial_{\\kappa \\lambda}{\\gamma_{\\mu \\nu}}+\\sqrt{-\\gamma} \\gamma^{\\kappa \\lambda} \\partial_{\\mu}{\\gamma^{\\mu \\nu}} \\partial_{\\kappa}{\\gamma_{\\lambda \\nu}}+\\sqrt{-\\gamma} \\gamma^{\\kappa \\lambda} \\gamma^{\\mu \\nu} \\partial_{\\kappa \\mu}{\\gamma_{\\lambda \\nu}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{\\kappa \\lambda} \\partial_{\\mu}{\\gamma_{\\kappa \\lambda}} \\partial_{\\nu}{\\gamma^{\\mu \\nu}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}{\\gamma_{\\lambda \\nu}} \\partial_{\\mu}{\\gamma_{\\kappa \\rho}}+\\frac{1}{4}\\sqrt{-\\gamma} \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}{\\gamma_{\\lambda \\nu}} \\partial_{\\kappa}{\\gamma_{\\mu \\rho}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}{\\gamma_{\\kappa \\lambda}} \\partial_{\\mu}{\\gamma_{\\nu \\rho}} - \\frac{1}{4}\\sqrt{-\\gamma} \\gamma^{\\eta \\kappa} \\gamma^{\\lambda \\mu} \\gamma^{\\nu \\rho} \\partial_{\\eta}{\\gamma_{\\lambda \\mu}} \\partial_{\\kappa}{\\gamma_{\\nu \\rho}}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(_, RStoRT)\nsubstitute(_, RTtoR)\nsubstitute(_, RtoG)\nsubstitute(_, Gtog)\ndistribute(_)\nproduct_rule(_)\ndistribute(_)\nsort_product(_);"
+		},
+		{
+			"cell_id": 9668412736261150356,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 10554852614789523613,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"source": "\\begin{dmath*}{} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\partial_{m}{\\gamma_{p q}} \\partial_{n}{\\gamma^{p q}}-\\sqrt{-\\gamma} \\gamma^{m n} \\partial_{m}{\\gamma_{4 p}} \\partial_{n}{\\gamma^{4 p}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\partial_{m}{\\gamma_{4 4}} \\partial_{n}{\\gamma^{4 4}}-\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\partial_{m n}{\\gamma_{p q}}-2\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\partial_{m n}{\\gamma_{4 p}}-\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 4} \\partial_{m n}{\\gamma_{4 4}}+\\sqrt{-\\gamma} \\gamma^{m n} \\partial_{p}{\\gamma^{p q}} \\partial_{m}{\\gamma_{n q}}+\\sqrt{-\\gamma} \\gamma^{m n} \\partial_{m}{\\gamma_{4 n}} \\partial_{p}{\\gamma^{4 p}}+\\sqrt{-\\gamma} \\gamma^{4 m} \\partial_{n}{\\gamma^{n p}} \\partial_{m}{\\gamma_{4 p}}+\\sqrt{-\\gamma} \\gamma^{4 m} \\partial_{m}{\\gamma_{4 4}} \\partial_{n}{\\gamma^{4 n}}+\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\partial_{m p}{\\gamma_{n q}}+2\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\partial_{m p}{\\gamma_{4 n}}+\\sqrt{-\\gamma} \\gamma^{4 m} \\gamma^{4 n} \\partial_{m n}{\\gamma_{4 4}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\partial_{p}{\\gamma_{m n}} \\partial_{q}{\\gamma^{p q}}-\\sqrt{-\\gamma} \\gamma^{4 m} \\partial_{n}{\\gamma_{4 m}} \\partial_{p}{\\gamma^{n p}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{4 4} \\partial_{m}{\\gamma_{4 4}} \\partial_{n}{\\gamma^{m n}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{r s} \\partial_{m}{\\gamma_{p r}} \\partial_{q}{\\gamma_{n s}}-\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{m}{\\gamma_{p r}} \\partial_{q}{\\gamma_{4 n}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 4} \\partial_{m}{\\gamma_{4 p}} \\partial_{q}{\\gamma_{4 n}}%\n-\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{r}{\\gamma_{m p}} \\partial_{n}{\\gamma_{4 q}}-\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 q} \\partial_{p}{\\gamma_{m q}} \\partial_{n}{\\gamma_{4 4}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 4} \\partial_{p}{\\gamma_{4 m}} \\partial_{n}{\\gamma_{4 4}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 q} \\partial_{p}{\\gamma_{4 m}} \\partial_{q}{\\gamma_{4 n}}+\\frac{1}{4}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{r s} \\partial_{m}{\\gamma_{p r}} \\partial_{n}{\\gamma_{q s}}+\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{m}{\\gamma_{p r}} \\partial_{n}{\\gamma_{4 q}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 4} \\partial_{m}{\\gamma_{4 p}} \\partial_{n}{\\gamma_{4 q}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 q} \\partial_{m}{\\gamma_{p q}} \\partial_{n}{\\gamma_{4 4}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 q} \\partial_{m}{\\gamma_{4 p}} \\partial_{n}{\\gamma_{4 q}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{r s} \\partial_{m}{\\gamma_{n p}} \\partial_{q}{\\gamma_{r s}}+\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{m}{\\gamma_{n p}} \\partial_{q}{\\gamma_{4 r}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 4} \\partial_{m}{\\gamma_{n p}} \\partial_{q}{\\gamma_{4 4}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{r}{\\gamma_{m n}} \\partial_{p}{\\gamma_{4 q}}+\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 q} \\partial_{m}{\\gamma_{4 n}} \\partial_{p}{\\gamma_{4 q}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 4} \\partial_{m}{\\gamma_{4 n}} \\partial_{p}{\\gamma_{4 4}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{m}{\\gamma_{p q}} \\partial_{r}{\\gamma_{4 n}}+\\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{4 p} \\gamma^{4 q} \\partial_{p}{\\gamma_{m n}} \\partial_{q}{\\gamma_{4 4}} - \\frac{1}{4}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{r s} \\partial_{m}{\\gamma_{p q}} \\partial_{n}{\\gamma_{r s}}-\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 r} \\partial_{m}{\\gamma_{p q}} \\partial_{n}{\\gamma_{4 r}} - \\frac{1}{2}\\sqrt{-\\gamma} \\gamma^{m n} \\gamma^{p q} \\gamma^{4 4} \\partial_{m}{\\gamma_{p q}} \\partial_{n}{\\gamma_{4 4}}\\end{dmath*}"
+				}
+			],
+			"source": "split_index(_, $\\mu, m1, 4$, repeat=True)\nsubstitute(_, $\\partial_{4}{A??} -> 0$, repeat=True)\nsubstitute(_, $\\partial_{4 m?}{A??} -> 0$, repeat=True)\nsubstitute(_, $\\partial_{m? 4}{A??} -> 0$, repeat=True)\nsubstitute(_, $\\partial_{4 4}{A??} -> 0$, repeat=True)\ncanonicalise(_);"
+		},
+		{
+			"cell_id": 17663778129576104851,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8074060477107439491,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 8732209085901124837,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  1/2 \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( 1/3 ) g^{n p}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) g^{m q} -  1/2 \\Dg \\partial_{m}((\\phi)**( -  2/3 )) \\partial_{n}((\\phi)**( 2/3 )) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) g^{m n}-\\Dg \\partial_{m n}((\\phi)**( -  1/3 ) g_{p q}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m n} g^{p q}-\\Dg \\partial_{m n}((\\phi)**( 2/3 )) (\\phi)**( -  2/3 ) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) g^{m n} + \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( 1/3 ) g^{p q}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) g^{m n} + \\Dg \\partial_{m n}((\\phi)**( -  1/3 ) g_{p q}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m p} g^{n q} -  1/2 \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( 1/3 ) g^{m q}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) g^{n p} -  1/2 \\Dg \\partial_{m}((\\phi)**( 2/3 )) \\partial_{n}((\\phi)**( 1/3 ) g^{m n}) (\\phi)**( -  2/3 ) (\\phi)**( -  1/3 ) -  1/2 \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( -  1/3 ) g_{r s}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m r} g^{n q} g^{p s} +  1/4 \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( -  1/3 ) g_{r s}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m q} g^{n r} g^{p s} +  1/2 \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( -  1/3 ) g_{r s}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m n} g^{p q} g^{r s} +  1/2 \\Dg \\partial_{m}((\\phi)**( 2/3 )) \\partial_{n}((\\phi)**( -  1/3 ) g_{p q}) (\\phi)**( -  2/3 ) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m p} g^{n q} -  1/4 \\Dg \\partial_{m}((\\phi)**( -  1/3 ) g_{n p}) \\partial_{q}((\\phi)**( -  1/3 ) g_{r s}) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m q} g^{n p} g^{r s} -  1/2 \\Dg \\partial_{m}((\\phi)**( 2/3 )) \\partial_{n}((\\phi)**( -  1/3 ) g_{p q}) (\\phi)**( -  2/3 ) (\\phi)**( -  1/3 ) (\\phi)**( 1/3 ) (\\phi)**( 1/3 ) g^{m n} g^{p q}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{\\frac{1}{3}} g^{n p}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m q} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{{\\phi}^{ - \\frac{2}{3}}} \\partial_{n}{{\\phi}^{\\frac{2}{3}}} {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m n}-\\sqrt{-g} \\partial_{m n}\\left({\\phi}^{ - \\frac{1}{3}} g_{p q}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m n} g^{p q}-\\sqrt{-g} \\partial_{m n}{{\\phi}^{\\frac{2}{3}}} {\\phi}^{ - \\frac{2}{3}} {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m n}+\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{\\frac{1}{3}} g^{p q}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m n}+\\sqrt{-g} \\partial_{m n}\\left({\\phi}^{ - \\frac{1}{3}} g_{p q}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m p} g^{n q} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{\\frac{1}{3}} g^{m q}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{n p} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{{\\phi}^{\\frac{2}{3}}} \\partial_{n}\\left({\\phi}^{\\frac{1}{3}} g^{m n}\\right) {\\phi}^{ - \\frac{2}{3}} {\\phi}^{ - \\frac{1}{3}} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{ - \\frac{1}{3}} g_{r s}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m r} g^{n q} g^{p s}+\\frac{1}{4}\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{ - \\frac{1}{3}} g_{r s}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m q} g^{n r} g^{p s}+\\frac{1}{2}\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{ - \\frac{1}{3}} g_{r s}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m n} g^{p q} g^{r s}+\\frac{1}{2}\\sqrt{-g} \\partial_{m}{{\\phi}^{\\frac{2}{3}}} \\partial_{n}\\left({\\phi}^{ - \\frac{1}{3}} g_{p q}\\right) {\\phi}^{ - \\frac{2}{3}} {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m p} g^{n q} - \\frac{1}{4}\\sqrt{-g} \\partial_{m}\\left({\\phi}^{ - \\frac{1}{3}} g_{n p}\\right) \\partial_{q}\\left({\\phi}^{ - \\frac{1}{3}} g_{r s}\\right) {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m q} g^{n p} g^{r s} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{{\\phi}^{\\frac{2}{3}}} \\partial_{n}\\left({\\phi}^{ - \\frac{1}{3}} g_{p q}\\right) {\\phi}^{ - \\frac{2}{3}} {\\phi}^{ - \\frac{1}{3}} {\\phi}^{\\frac{1}{3}} {\\phi}^{\\frac{1}{3}} g^{m n} g^{p q}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(_, $\\gamma_{4 4} -> \\phi**{2/3}$ )\nsubstitute(_, $\\gamma_{m 4} -> 0$ )\nsubstitute(_, $\\gamma_{4 m} -> 0$ )\nsubstitute(_, $\\gamma_{m n} -> \\phi**{-1/3} g_{m n}$ )\nsubstitute(_, $\\gamma^{4 4} -> \\phi**{-2/3}$ )\nsubstitute(_, $\\gamma^{m 4} -> 0$ )\nsubstitute(_, $\\gamma^{4 m} -> 0$ )\nsubstitute(_, $\\gamma^{m n} -> \\phi**{1/3} g^{m n}$ )\nsubstitute(_, $\\Dgamma -> \\phi**{-1/3} \\Dg$);"
+		},
+		{
+			"cell_id": 10393186013075716050,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": "converge(todo):\n   distribute(_)\n   product_rule(_)\n   canonicalise(_)"
+		},
+		{
+			"cell_id": 12582803948556398997,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 5084218680163070876,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 7281612525582072306,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  2/9 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g_{p q} g^{m n} g^{p q} +  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g^{p q}) (\\phi)**(-1) g_{p q} g^{m n} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{n p}) g^{m q} +  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g^{m n} +  1/3 \\Dg \\partial_{m n}(\\phi) (\\phi)**(-1) g_{p q} g^{m n} g^{p q}-\\Dg \\partial_{m n}(g_{p q}) g^{m n} g^{p q} -  2/3 \\Dg \\partial_{m n}(\\phi) (\\phi)**(-1) g^{m n} +  2/9 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g_{p q} g^{m p} g^{n q} -  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g^{n p}) (\\phi)**(-1) g_{p q} g^{m q} + \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{n q}) g^{m p} -  1/3 \\Dg \\partial_{m n}(\\phi) (\\phi)**(-1) g_{p q} g^{m p} g^{n q} + \\Dg \\partial_{m n}(g_{p q}) g^{m p} g^{n q} +  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g^{m n}) (\\phi)**(-1) g_{p q} g^{p q} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{m q}) g^{n p} -  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g^{m n}) (\\phi)**(-1) -  1/18 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g_{p q} g_{r s} g^{m p} g^{n r} g^{q s} +  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g_{r s} g^{m p} g^{n r} g^{q s} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m r} g^{n q} g^{p s} +  1/36 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g_{p q} g_{r s} g^{m n} g^{p r} g^{q s} -  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g_{r s} g^{m n} g^{p r} g^{q s} +  1/4 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m q} g^{n r} g^{p s} +  1/18 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g_{p q} g_{r s} g^{m p} g^{n q} g^{r s} -  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g_{r s} g^{m r} g^{n s} g^{p q} -  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g_{r s} g^{m p} g^{n q} g^{r s} +  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m n} g^{p q} g^{r s} -  1/36 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g_{p q} g_{r s} g^{m n} g^{p q} g^{r s} +  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g_{r s} g^{m n} g^{p q} g^{r s} -  1/4 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m q} g^{n p} g^{r s}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{2}{9}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g_{p q} g^{m n} g^{p q}+\\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g^{p q}} {\\phi}^{-1} g_{p q} g^{m n} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{n p}} g^{m q}+\\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g^{m n}+\\frac{1}{3}\\sqrt{-g} \\partial_{m n}{\\phi} {\\phi}^{-1} g_{p q} g^{m n} g^{p q}-\\sqrt{-g} \\partial_{m n}{g_{p q}} g^{m n} g^{p q} - \\frac{2}{3}\\sqrt{-g} \\partial_{m n}{\\phi} {\\phi}^{-1} g^{m n}+\\frac{2}{9}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g_{p q} g^{m p} g^{n q} - \\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g^{n p}} {\\phi}^{-1} g_{p q} g^{m q}+\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{n q}} g^{m p} - \\frac{1}{3}\\sqrt{-g} \\partial_{m n}{\\phi} {\\phi}^{-1} g_{p q} g^{m p} g^{n q}+\\sqrt{-g} \\partial_{m n}{g_{p q}} g^{m p} g^{n q}+\\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g^{m n}} {\\phi}^{-1} g_{p q} g^{p q} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{m q}} g^{n p} - \\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g^{m n}} {\\phi}^{-1} - \\frac{1}{18}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g_{p q} g_{r s} g^{m p} g^{n r} g^{q s}+\\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g_{r s} g^{m p} g^{n r} g^{q s} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m r} g^{n q} g^{p s}+\\frac{1}{36}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g_{p q} g_{r s} g^{m n} g^{p r} g^{q s}%\n - \\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g_{r s} g^{m n} g^{p r} g^{q s}+\\frac{1}{4}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m q} g^{n r} g^{p s}+\\frac{1}{18}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g_{p q} g_{r s} g^{m p} g^{n q} g^{r s} - \\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g_{r s} g^{m r} g^{n s} g^{p q} - \\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g_{r s} g^{m p} g^{n q} g^{r s}+\\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m n} g^{p q} g^{r s} - \\frac{1}{36}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g_{p q} g_{r s} g^{m n} g^{p q} g^{r s}+\\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g_{r s} g^{m n} g^{p q} g^{r s} - \\frac{1}{4}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m q} g^{n p} g^{r s}\\end{dmath*}"
+				}
+			],
+			"source": "collect_factors(_);"
+		},
+		{
+			"cell_id": 11883475015756810874,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 8869086008770710496,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 13142953858834348280,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  2/9 \\Dg \\delta^{m}_{m} \\partial_{n}(\\phi) \\partial_{p}(\\phi) (\\phi)**(-2) g^{n p} -  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g^{m n} g^{p q} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{n p}) g^{m q} +  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g^{m n} +  1/3 \\Dg \\delta^{m}_{m} \\partial_{n p}(\\phi) (\\phi)**(-1) g^{n p}-\\Dg \\partial_{m n}(g_{p q}) g^{m n} g^{p q} -  2/3 \\Dg \\partial_{m n}(\\phi) (\\phi)**(-1) g^{m n} +  2/9 \\Dg \\partial_{n}(\\phi) \\partial_{p}(\\phi) (\\phi)**(-2) g^{n p} -  1/3 \\Dg \\partial_{n}(\\phi) \\partial_{p}(g^{n p}) (\\phi)**(-1) + \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{n q}) g^{m p} -  1/3 \\Dg \\partial_{n p}(\\phi) (\\phi)**(-1) g^{n p} + \\Dg \\partial_{m n}(g_{p q}) g^{m p} g^{n q} +  1/6 \\Dg \\delta^{m}_{m} \\partial_{n}(\\phi) \\partial_{p}(g^{n p}) (\\phi)**(-1) -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{m q}) g^{n p} -  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g^{m n}) (\\phi)**(-1) -  1/18 \\Dg \\partial_{p}(\\phi) \\partial_{q}(\\phi) (\\phi)**(-2) g^{p q} +  1/3 \\Dg \\partial_{n}(\\phi) \\partial_{p}(g_{q r}) (\\phi)**(-1) g^{n q} g^{p r} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m r} g^{n q} g^{p s} +  1/36 \\Dg \\delta^{n}_{n} \\partial_{p}(\\phi) \\partial_{q}(\\phi) (\\phi)**(-2) g^{p q} -  1/3 \\Dg \\partial_{n}(\\phi) \\partial_{p}(g_{q r}) (\\phi)**(-1) g^{n p} g^{q r} +  1/4 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m q} g^{n r} g^{p s} +  1/18 \\Dg \\delta^{m}_{m} \\partial_{p}(\\phi) \\partial_{r}(\\phi) (\\phi)**(-2) g^{p r} -  1/6 \\Dg \\delta^{m}_{m} \\partial_{n}(\\phi) \\partial_{p}(g_{q r}) (\\phi)**(-1) g^{n q} g^{p r} +  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m n} g^{p q} g^{r s} -  1/36 \\Dg \\delta^{m}_{m} \\delta^{n}_{n} \\partial_{p}(\\phi) \\partial_{r}(\\phi) (\\phi)**(-2) g^{p r} +  1/6 \\Dg \\delta^{m}_{m} \\partial_{n}(\\phi) \\partial_{p}(g_{q r}) (\\phi)**(-1) g^{n p} g^{q r} -  1/4 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m q} g^{n p} g^{r s}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{2}{9}\\sqrt{-g} \\delta^{m}\\,_{m} \\partial_{n}{\\phi} \\partial_{p}{\\phi} {\\phi}^{-2} g^{n p} - \\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g^{m n} g^{p q} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{n p}} g^{m q}+\\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g^{m n}+\\frac{1}{3}\\sqrt{-g} \\delta^{m}\\,_{m} \\partial_{n p}{\\phi} {\\phi}^{-1} g^{n p}-\\sqrt{-g} \\partial_{m n}{g_{p q}} g^{m n} g^{p q} - \\frac{2}{3}\\sqrt{-g} \\partial_{m n}{\\phi} {\\phi}^{-1} g^{m n}+\\frac{2}{9}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{\\phi} {\\phi}^{-2} g^{n p} - \\frac{1}{3}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{g^{n p}} {\\phi}^{-1}+\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{n q}} g^{m p} - \\frac{1}{3}\\sqrt{-g} \\partial_{n p}{\\phi} {\\phi}^{-1} g^{n p}+\\sqrt{-g} \\partial_{m n}{g_{p q}} g^{m p} g^{n q}+\\frac{1}{6}\\sqrt{-g} \\delta^{m}\\,_{m} \\partial_{n}{\\phi} \\partial_{p}{g^{n p}} {\\phi}^{-1} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{m q}} g^{n p} - \\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g^{m n}} {\\phi}^{-1} - \\frac{1}{18}\\sqrt{-g} \\partial_{p}{\\phi} \\partial_{q}{\\phi} {\\phi}^{-2} g^{p q}+\\frac{1}{3}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{g_{q r}} {\\phi}^{-1} g^{n q} g^{p r} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m r} g^{n q} g^{p s}+\\frac{1}{36}\\sqrt{-g} \\delta^{n}\\,_{n} \\partial_{p}{\\phi} \\partial_{q}{\\phi} {\\phi}^{-2} g^{p q}%\n - \\frac{1}{3}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{g_{q r}} {\\phi}^{-1} g^{n p} g^{q r}+\\frac{1}{4}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m q} g^{n r} g^{p s}+\\frac{1}{18}\\sqrt{-g} \\delta^{m}\\,_{m} \\partial_{p}{\\phi} \\partial_{r}{\\phi} {\\phi}^{-2} g^{p r} - \\frac{1}{6}\\sqrt{-g} \\delta^{m}\\,_{m} \\partial_{n}{\\phi} \\partial_{p}{g_{q r}} {\\phi}^{-1} g^{n q} g^{p r}+\\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m n} g^{p q} g^{r s} - \\frac{1}{36}\\sqrt{-g} \\delta^{m}\\,_{m} \\delta^{n}\\,_{n} \\partial_{p}{\\phi} \\partial_{r}{\\phi} {\\phi}^{-2} g^{p r}+\\frac{1}{6}\\sqrt{-g} \\delta^{m}\\,_{m} \\partial_{n}{\\phi} \\partial_{p}{g_{q r}} {\\phi}^{-1} g^{n p} g^{q r} - \\frac{1}{4}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m q} g^{n p} g^{r s}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(_, $\\partial_{p}{g^{n m}} g_{q m} -> - \\partial_{p}{g_{q m}} g^{n m}$ )\ncollect_factors(_)\nsort_product(_)\nconverge(todo):\n\tsubstitute(_, $g_{m1 m2} g^{m3 m2} -> \\delta_{m1}^{m3}$, repeat=True )\n\teliminate_kronecker(_)\n\tcanonicalise(_)\n;"
+		},
+		{
+			"cell_id": 3522579075940013694,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"cells": [
+				{
+					"cell_id": 2624732132291803675,
+					"cell_origin": "server",
+					"cell_type": "latex_view",
+					"cells": [
+						{
+							"cell_id": 14137449269014031553,
+							"cell_origin": "server",
+							"cell_type": "input_form",
+							"source": " -  1/6 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g_{p q}) (\\phi)**(-1) g^{m n} g^{p q} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{n p}) g^{m q} +  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(\\phi) (\\phi)**(-2) g^{m n}-\\Dg \\partial_{m n}(g_{p q}) g^{m n} g^{p q} -  2/3 \\Dg \\partial_{m n}(\\phi) (\\phi)**(-1) g^{m n} -  1/6 \\Dg \\partial_{n}(\\phi) \\partial_{p}(g^{n p}) (\\phi)**(-1) + \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{n q}) g^{m p} + \\Dg \\partial_{m n}(g_{p q}) g^{m p} g^{n q} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g^{m q}) g^{n p} -  1/3 \\Dg \\partial_{m}(\\phi) \\partial_{n}(g^{m n}) (\\phi)**(-1) -  1/36 \\Dg \\partial_{p}(\\phi) \\partial_{q}(\\phi) (\\phi)**(-2) g^{p q} +  1/6 \\Dg \\partial_{n}(\\phi) \\partial_{p}(g_{q r}) (\\phi)**(-1) g^{n q} g^{p r} -  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m r} g^{n q} g^{p s} -  1/6 \\Dg \\partial_{n}(\\phi) \\partial_{p}(g_{q r}) (\\phi)**(-1) g^{n p} g^{q r} +  1/4 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m q} g^{n r} g^{p s} +  1/36 \\Dg \\partial_{p}(\\phi) \\partial_{r}(\\phi) (\\phi)**(-2) g^{p r} +  1/2 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m n} g^{p q} g^{r s} -  1/4 \\Dg \\partial_{m}(g_{n p}) \\partial_{q}(g_{r s}) g^{m q} g^{n p} g^{r s}"
+						}
+					],
+					"source": "\\begin{dmath*}{} - \\frac{1}{6}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g_{p q}} {\\phi}^{-1} g^{m n} g^{p q} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{n p}} g^{m q}+\\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{\\phi} {\\phi}^{-2} g^{m n}-\\sqrt{-g} \\partial_{m n}{g_{p q}} g^{m n} g^{p q} - \\frac{2}{3}\\sqrt{-g} \\partial_{m n}{\\phi} {\\phi}^{-1} g^{m n} - \\frac{1}{6}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{g^{n p}} {\\phi}^{-1}+\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{n q}} g^{m p}+\\sqrt{-g} \\partial_{m n}{g_{p q}} g^{m p} g^{n q} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g^{m q}} g^{n p} - \\frac{1}{3}\\sqrt{-g} \\partial_{m}{\\phi} \\partial_{n}{g^{m n}} {\\phi}^{-1} - \\frac{1}{36}\\sqrt{-g} \\partial_{p}{\\phi} \\partial_{q}{\\phi} {\\phi}^{-2} g^{p q}+\\frac{1}{6}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{g_{q r}} {\\phi}^{-1} g^{n q} g^{p r} - \\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m r} g^{n q} g^{p s} - \\frac{1}{6}\\sqrt{-g} \\partial_{n}{\\phi} \\partial_{p}{g_{q r}} {\\phi}^{-1} g^{n p} g^{q r}+\\frac{1}{4}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m q} g^{n r} g^{p s}+\\frac{1}{36}\\sqrt{-g} \\partial_{p}{\\phi} \\partial_{r}{\\phi} {\\phi}^{-2} g^{p r}+\\frac{1}{2}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m n} g^{p q} g^{r s} - \\frac{1}{4}\\sqrt{-g} \\partial_{m}{g_{n p}} \\partial_{q}{g_{r s}} g^{m q} g^{n p} g^{r s}\\end{dmath*}"
+				}
+			],
+			"source": "substitute(_, $\\delta_{m}^{m} -> 1$);"
+		},
+		{
+			"cell_id": 13371646225941435833,
+			"cell_origin": "client",
+			"cell_type": "input",
+			"source": ""
+		}
+	],
+	"description": "Cadabra JSON notebook format",
+	"version": 1.0
+}
